@@ -1,36 +1,42 @@
 package bin;
-
+/**
+ * 
+ * @author houxiang
+ *
+ */
 public class Test20 {
 	public ListNode removeNthFromEnd(ListNode head, int n) {
-		if (head == null || head.next == null) {
-			return null;
+		ListNode p1 = head ;
+		ListNode p2 = head ;
+		ListNode removeNode = head ;
+		int i = 0 ;
+		while(i<n){
+			p1 = p1.next;
+			i++;
 		}
-
-		int count = 0;
-		ListNode runner = head;
-		ListNode walker = head;
+		if (p1 == null) {
+			return p1.next ;
+		}
+		while (p1.next!=null) {
+			p1 = p1.next ;
+			removeNode = removeNode.next;
+			p1 = removeNode ;
+		}
 		
-		while (walker.next != null && count < n) {
-			walker = walker.next;
-			count++;
+		if (p2 == removeNode) {
+			return head.next;
+		}else{
+			p2.next = removeNode.next ;
 		}
-
-		while (walker.next != null) {
-			runner = runner.next;
-			walker = walker.next;
-		}
-		if (runner.next.next != null) {
-			runner.next = runner.next.next;
-		}
-		return head;
+		return head ;
 	}
 
 	public static void main(String[] args) {
 
 		ListNode n1 = new ListNode(1);
 		ListNode n2 = new ListNode(2);
-
-		n1.next = n2;
+		
+		//n1.next = n2;
 
 		Test20 t = new Test20();
 		ListNode list = t.removeNthFromEnd(n1, 1);
