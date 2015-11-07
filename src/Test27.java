@@ -1,6 +1,10 @@
 import java.util.HashMap;
 import java.util.Stack;
-
+/**
+ * Longest Valid Parentheses
+ * @author houxiang
+ *
+ */
 public class Test27 {
 	public int longestValidParentheses(String s) {
 		Stack<Integer> stack = new Stack<Integer>() ;
